@@ -1,0 +1,30 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  background-color: aqua;
+}
+
+#pizarra {
+  /*márgenes placeholders: barras arriba y abajo */
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  display: flex;
+  justify-content: center;
+}
+
+#wrapper {
+  flex: 0 1 auto;
+  display: grid;
+  height: 80vh;
+}
+
+.column,
+.row {
+  /* 750 * 750*/
+  display: inline-block;
+  box-sizing: border-box;
+  border: 0.5px solid rgba(219, 219, 219, 0.5);
+  background-color: white;
+  width: calc(80vh / 16);
+  height: calc(80vh / 16);
+}
