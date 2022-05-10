@@ -7,14 +7,6 @@ function etchASketch() {
         let grid = document.createElement("div");
         let size = 75 / ratio;
         grid.classList.add("grid");
-        let hoveredGrid = document.querySelectorAll(".grid");
-
-        //esta parte del código es la que da problemas de rendimiento.
-        hoveredGrid.forEach((el) => {
-          el.addEventListener("mouseover", () => {
-            el.classList.add("hover");
-          });
-        });
         Object.assign(grid.style, {
           gridRowStart: row,
           gridRowEnd: row,
@@ -23,10 +15,15 @@ function etchASketch() {
           width: size + "vh",
           height: size + "vh",
         });
-
         wrapper.appendChild(grid);
       }
     }
+    let hoveredGrid = document.querySelectorAll(".grid");
+    hoveredGrid.forEach((el) => {
+      el.addEventListener("mouseover", () => {
+        el.classList.add("hover");
+      });
+    });
   }
 
   //inicialización por defecto
@@ -65,15 +62,3 @@ function etchASketch() {
   });
 }
 window.onload = etchASketch;
-
-/*
-<input id="name" type="text">
-<button onclick="go()">Go</button>
-And a simple script to go with it that is called when the button is clicked:
-
-function go() {
-    var text = document.getElementById("name").value;
-    alert("The user typed '" + text + "'");
-}
-
-*/
