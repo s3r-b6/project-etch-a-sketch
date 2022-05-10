@@ -23,8 +23,37 @@ function etchASketch() {
     let hoveredGrid = document.querySelectorAll(".grid");
     hoveredGrid.forEach((el) => {
       el.addEventListener("mouseover", () => {
-        el.classList.add("hover");
+        //imagino que no es una solución muy elegante pero no he dado con otra cosa
+        function color() {
+          if (el.classList.contains("n1")) {
+            el.classList.remove("n1");
+            el.classList.add("n2");
+          } else if (el.classList.contains("n2")) {
+            el.classList.remove("n2");
+            el.classList.add("n3");
+          } else if (el.classList.contains("n3")) {
+            el.classList.remove("n3");
+            el.classList.add("n4");
+          } else {
+            el.classList.add("n1");
+          }
+        }
+        color();
       });
+
+      /*
+      hoveredGrid.forEach((el) => {
+        el.addEventListener("mouseover", () => {
+            if ((el.style = "background-color: #ffffff")) {
+              el.style = "background-color: #757575";
+            } else if ((el.style = "background-color: #757575")) {
+              el.style = "background-color: #505050";
+            } else if ((el.style = "background-color: #505050")) {
+              el.style = "background-color: #252525";
+          }
+          color();
+        });
+*/
     });
   }
 
@@ -34,9 +63,9 @@ function etchASketch() {
   //restart
   let restartButton = document.querySelector(".restart");
   restartButton.addEventListener("click", () => {
-    let unhover = document.querySelectorAll(".hover");
+    let unhover = document.querySelectorAll(".grid");
     [].forEach.call(unhover, function (el) {
-      el.classList.remove("hover");
+      el.classList.remove("n1", "n2", "n3", "n4");
     });
   });
 

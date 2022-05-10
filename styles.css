@@ -48,16 +48,23 @@ main {
   display: inline-block;
   box-sizing: border-box;
   border: 0.5px solid rgba(219, 219, 219, 0.5);
-  background-color: white;
-  /*
-  width: calc(75vh / 16);
-  height: calc(75vh / 16);
-  */
+  background-color: #ffffff;
+}
+.grid:hover {
+  cursor: pointer;
 }
 
-.grid.hover {
-  cursor: pointer;
-  background-color: grey;
+.grid.n1 {
+  background-color: #757575;
+}
+.grid.n2 {
+  background-color: #505050;
+}
+.grid.n3 {
+  background-color: #252525;
+}
+.grid.n4 {
+  background-color: #000000;
 }
 
 #buttons {
