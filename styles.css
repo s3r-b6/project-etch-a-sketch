@@ -12,23 +12,28 @@ html {
   background-image: linear-gradient(to top left, #0b0c10, #1d2029);
 }
 
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
 #top {
-  font-size: 6em;
-  background-color: #1d2029;
-  height: 9vh;
-  margin-left: 10%;
-  margin-right: 10%;
-  width: 80%;
-  text-align: left;
-  color: whitesmoke;
-  padding-top: 0.15em;
-  padding-bottom: 0.35em;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  flex: 0 1 8%;
+  font-size: 22px;
 }
 
 #pizarra {
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10vh;
+  padding-right: 10vh;
+  flex: 0 1 75%;
+  justify-self: center;
   background-color: #919191;
   display: flex;
   justify-content: center;
@@ -37,7 +42,6 @@ html {
 #wrapper {
   flex: 0 1 auto;
   display: grid;
-  height: 75vh;
   background-color: transparent;
 }
 
@@ -51,39 +55,35 @@ html {
   height: calc(75vh / 16);
 }
 
-.column:hover,
-.row:hover {
+.column.hover,
+.row.hover {
   cursor: pointer;
   background-color: grey;
 }
 
-.column.hover,
-.row.hover {
-  background-color: grey;
-}
-
 #buttons {
-  height: 15vh;
+  padding-bottom: 0.5em;
+  flex: 1 1 10%;
   width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  text-align: center;
 }
 
 .button {
-  align-items: center;
-  text-align: center;
-  font-size: 48px;
+  flex: 0 1 auto;
+  font-size: 2vh;
   text-transform: uppercase;
-  flex: 0 0 auto;
   background-color: white;
   border: 0px;
-  border-radius: 1000px;
-  width: 350px;
-  height: 350px;
+  border-radius: 60px;
+  width: 11vh;
+  height: 11vh;
   box-shadow: inset 0 20px 30px -20px #000000;
 }
 
-.button:hover{
+.button:hover {
   cursor: pointer;
   background-color: rgb(228, 228, 228);
   box-shadow: inset 0 25px 35px -20px #000000;
@@ -91,12 +91,57 @@ html {
 
 #adjust-cont,
 #restart-cont {
+  padding-top: 0.2em;
+  flex: 0 1 auto;
   margin-left: 6em;
   margin-right: 6em;
-  padding-bottom: 1em;
-  display: flex;
-  width: 50%;
+}
+
+#adjust-cont {
+  margin-right: auto;
 }
 #restart-cont {
-  justify-content: right;
+  margin-left: auto;
+}
+
+#adjust-pop {
+  border-radius: 0.3em;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#adjust-row,
+#adjust-col {
+  background-color: #636363;
+  color: white;
+  font-size: 2vh;
+  text-align: center;
+  width: 4vh;
+  height: 4vh;
+  border: none;
+}
+
+.inv {
+  visibility: hidden;
+  display: none;
+}
+
+#submit-inp {
+  background-color: #3f3f3f;
+  margin-top: 0.2em;
+  border: none;
+  color: white;
+  height: 3vh;
+}
+#submit-inp:hover {
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+input {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
 }
