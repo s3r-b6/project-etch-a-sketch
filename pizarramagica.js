@@ -7,6 +7,7 @@ function etchASketch() {
         let grid = document.createElement("div");
         let size = 75 / ratio;
         grid.classList.add("grid");
+        //propiedades css grid
         Object.assign(grid.style, {
           gridRowStart: row,
           gridRowEnd: row,
@@ -18,6 +19,7 @@ function etchASketch() {
         wrapper.appendChild(grid);
       }
     }
+    //colorear al pasar el ratón
     let hoveredGrid = document.querySelectorAll(".grid");
     hoveredGrid.forEach((el) => {
       el.addEventListener("mouseover", () => {
@@ -29,6 +31,7 @@ function etchASketch() {
   //inicialización por defecto
   createGrid(16, 16, 16);
 
+  //restart
   let restartButton = document.querySelector(".restart");
   restartButton.addEventListener("click", () => {
     let unhover = document.querySelectorAll(".hover");
@@ -44,9 +47,6 @@ function etchASketch() {
 
   document.querySelector("#submit-inp").addEventListener("click", () => {
     document.querySelector("#adjust-pop").classList.add("inv");
-  });
-
-  document.querySelector("#submit-inp").addEventListener("click", () => {
     let numRows = document.getElementById("adjust-row").value;
     let numCols = document.getElementById("adjust-col").value;
     let ratio = Math.min(numRows, numCols);
@@ -57,7 +57,8 @@ function etchASketch() {
       }
       createGrid(numRows, numCols, ratio);
     } else {
-      prompt("Valor inválido! Rango aceptado [1-100]");
+      window.alert("Valor inválido! Rango aceptado [1-100]");
+      document.querySelector("#adjust-pop").classList.remove("inv");
     }
   });
 }
