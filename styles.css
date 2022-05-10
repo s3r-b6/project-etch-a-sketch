@@ -28,10 +28,9 @@ main {
 }
 
 #pizarra {
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 10vh;
-  padding-right: 10vh;
   flex: 0 1 75%;
   justify-self: center;
   background-color: #919191;
@@ -51,8 +50,10 @@ main {
   box-sizing: border-box;
   border: 0.5px solid rgba(219, 219, 219, 0.5);
   background-color: white;
+  /*
   width: calc(75vh / 16);
   height: calc(75vh / 16);
+  */
 }
 
 .column.hover,

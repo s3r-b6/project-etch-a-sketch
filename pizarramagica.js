@@ -1,31 +1,34 @@
 function etchASketch() {
   let wrapper = document.querySelector("#wrapper");
   function createGrid(maxColumns, maxRows) {
-    for (columns = 1; columns < maxColumns + 1; columns++) {
-      for (row = 1; row < maxRows + 1; row++) {
+    //estaba pasando el maxColumns y el maxRows como strings así que al sumar uno daba un dígito más....
+    for (columns = 1; columns < parseInt(maxColumns) + 1; columns++) {
+      for (row = 1; row < parseInt(maxRows) + 1; row++) {
         let gridrow = document.createElement("div");
         gridrow.classList.add("grid", "row");
+        let size = 75 / maxRows;
         Object.assign(gridrow.style, {
           gridRowStart: row,
           gridRowEnd: row,
           gridColumnStart: columns,
           gridColumnEnd: columns,
-          /*width: calc(75vh/maxRows),
-          height: calc(75vh/maxRows),*/
+          width: size + "vh",
+          height: size + "vh",
         });
         wrapper.appendChild(gridrow);
+
+        let hoveredGrid = document.querySelectorAll(".grid");
+        [].forEach.call(hoveredGrid, function (el) {
+          el.addEventListener("mouseover", () => {
+            el.classList.add("hover");
+          });
+        });
       }
     }
   }
+
   //inicialización por defecto
   createGrid(16, 16);
-
-  let hoveredGrid = document.querySelectorAll(".grid");
-  [].forEach.call(hoveredGrid, function (el) {
-    el.addEventListener("mouseover", () => {
-      el.classList.add("hover");
-    });
-  });
 
   let restartButton = document.querySelector(".restart");
   restartButton.addEventListener("click", () => {
@@ -52,7 +55,7 @@ function etchASketch() {
       while (wrapper.firstChild) {
         wrapper.removeChild(wrapper.lastChild);
       }
-      createGrid(numRows, numCols);
+    createGrid(numRows, numCols);
     } else {
       prompt("Valor inválido! Rango aceptado [1-100]");
     }
