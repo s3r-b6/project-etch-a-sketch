@@ -44,8 +44,7 @@ main {
   background-color: transparent;
 }
 
-.column,
-.row {
+.grid {
   display: inline-block;
   box-sizing: border-box;
   border: 0.5px solid rgba(219, 219, 219, 0.5);
@@ -56,8 +55,7 @@ main {
   */
 }
 
-.column.hover,
-.row.hover {
+.grid.hover {
   cursor: pointer;
   background-color: grey;
 }

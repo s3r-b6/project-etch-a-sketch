@@ -1,13 +1,21 @@
 function etchASketch() {
   let wrapper = document.querySelector("#wrapper");
-  function createGrid(maxColumns, maxRows) {
+  function createGrid(maxColumns, maxRows, ratio) {
     //estaba pasando el maxColumns y el maxRows como strings así que al sumar uno daba un dígito más....
     for (columns = 1; columns < parseInt(maxColumns) + 1; columns++) {
       for (row = 1; row < parseInt(maxRows) + 1; row++) {
-        let gridrow = document.createElement("div");
-        gridrow.classList.add("grid", "row");
-        let size = 75 / maxRows;
-        Object.assign(gridrow.style, {
+        let grid = document.createElement("div");
+        let size = 75 / ratio;
+        grid.classList.add("grid");
+        let hoveredGrid = document.querySelectorAll(".grid");
+
+        //esta parte del código es la que da problemas de rendimiento.
+        hoveredGrid.forEach((el) => {
+          el.addEventListener("mouseover", () => {
+            el.classList.add("hover");
+          });
+        });
+        Object.assign(grid.style, {
           gridRowStart: row,
           gridRowEnd: row,
           gridColumnStart: columns,
@@ -15,20 +23,14 @@ function etchASketch() {
           width: size + "vh",
           height: size + "vh",
         });
-        wrapper.appendChild(gridrow);
 
-        let hoveredGrid = document.querySelectorAll(".grid");
-        [].forEach.call(hoveredGrid, function (el) {
-          el.addEventListener("mouseover", () => {
-            el.classList.add("hover");
-          });
-        });
+        wrapper.appendChild(grid);
       }
     }
   }
 
   //inicialización por defecto
-  createGrid(16, 16);
+  createGrid(16, 16, 16);
 
   let restartButton = document.querySelector(".restart");
   restartButton.addEventListener("click", () => {
@@ -50,12 +52,13 @@ function etchASketch() {
   document.querySelector("#submit-inp").addEventListener("click", () => {
     let numRows = document.getElementById("adjust-row").value;
     let numCols = document.getElementById("adjust-col").value;
-    console.log(numRows, numCols);
+    let ratio = Math.min(numRows, numCols);
+    console.log(numRows, numCols, ratio);
     if (numRows > 0 && numCols > 0 && numRows < 101 && numCols < 101) {
       while (wrapper.firstChild) {
         wrapper.removeChild(wrapper.lastChild);
       }
-    createGrid(numRows, numCols);
+      createGrid(numRows, numCols, ratio);
     } else {
       prompt("Valor inválido! Rango aceptado [1-100]");
     }
