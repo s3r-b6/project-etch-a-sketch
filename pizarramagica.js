@@ -1,7 +1,6 @@
 function etchASketch() {
   let wrapper = document.querySelector("#wrapper");
   function createGrid(maxColumns, maxRows, ratio) {
-    //estaba pasando el maxColumns y el maxRows como strings así que al sumar uno daba un dígito más....
     for (columns = 1; columns < parseInt(maxColumns) + 1; columns++) {
       for (row = 1; row < parseInt(maxRows) + 1; row++) {
         let grid = document.createElement("div");
@@ -19,9 +18,9 @@ function etchASketch() {
         wrapper.appendChild(grid);
       }
     }
+
     //colorear al pasar el ratón
-    let hoveredGrid = document.querySelectorAll(".grid");
-    hoveredGrid.forEach((el) => {
+    document.querySelectorAll(".grid").forEach((el) => {
       el.addEventListener("mouseover", () => {
         //imagino que no es una solución muy elegante pero no he dado con otra cosa
         function color() {
@@ -40,20 +39,6 @@ function etchASketch() {
         }
         color();
       });
-
-      /*
-      hoveredGrid.forEach((el) => {
-        el.addEventListener("mouseover", () => {
-            if ((el.style = "background-color: #ffffff")) {
-              el.style = "background-color: #757575";
-            } else if ((el.style = "background-color: #757575")) {
-              el.style = "background-color: #505050";
-            } else if ((el.style = "background-color: #505050")) {
-              el.style = "background-color: #252525";
-          }
-          color();
-        });
-*/
     });
   }
 
@@ -61,8 +46,7 @@ function etchASketch() {
   createGrid(16, 16, 16);
 
   //restart
-  let restartButton = document.querySelector(".restart");
-  restartButton.addEventListener("click", () => {
+  document.querySelector(".restart").addEventListener("click", () => {
     let unhover = document.querySelectorAll(".grid");
     [].forEach.call(unhover, function (el) {
       el.classList.remove("n1", "n2", "n3", "n4");
@@ -73,7 +57,6 @@ function etchASketch() {
   document.querySelector(".adjust").addEventListener("click", () => {
     document.querySelector("#adjust-pop").classList.remove("inv");
   });
-
   document.querySelector("#submit-inp").addEventListener("click", () => {
     document.querySelector("#adjust-pop").classList.add("inv");
     let numRows = document.getElementById("adjust-row").value;
